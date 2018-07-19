@@ -16,7 +16,7 @@ add_library(c++
             ${SRC_FILES})
 
 target_include_directories(c++
-                           PUBLIC 
+                           PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libcxx/include>
                            $<INSTALL_INTERFACE:${SDK_INSTALL_PREFIX}/include/>)
 
@@ -26,4 +26,10 @@ install(TARGETS c++ EXPORT EosioLib
    LIBRARY DESTINATION ${SDK_INSTALL_PREFIX}/lib/
    ARCHIVE DESTINATION ${SDK_INSTALL_PREFIX}/lib/)
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libcxx/include/ DESTINATION ${SDK_INSTALL_PREFIX}/include/libcxx)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/libcxx/include/
+        DESTINATION ${SDK_INSTALL_PREFIX}/include/libcxx
+        FILES_MATCHING
+        PATTERN "*"
+        PATTERN "CMakeLists.txt" EXCLUDE
+        PATTERN "__config_site.in" EXCLUDE
+)

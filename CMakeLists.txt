@@ -48,13 +48,13 @@ endif()
 message( STATUS "Using '${CORE_SYMBOL_NAME}' as CORE symbol name" )
 
 # install examples
-install(DIRECTORY examples DESTINATION "${SDK_INSTALL_PREFIX}")
+#install(DIRECTORY examples DESTINATION "${SDK_INSTALL_PREFIX}")
 
 install(EXPORT EosioLib DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 
 set(INCLUDE_INSTALL_DIR ${SDK_INSTALL_PREFIX}/include)
 include(CMakePackageConfigHelpers)
-write_basic_package_version_file(EosioLibConfigVersion.cmake 
+write_basic_package_version_file(EosioLibConfigVersion.cmake
    COMPATIBILITY SameMajorVersion)
 
 configure_package_config_file(${CMAKE_SOURCE_DIR}/modules/EosioLibConfig.cmake.in EosioLibConfig.cmake
